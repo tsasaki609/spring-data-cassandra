@@ -32,7 +32,7 @@ import org.springframework.data.mapping.model.SimpleTypeHolder;
 import org.springframework.util.Assert;
 import org.springframework.util.ClassUtils;
 
-import com.datastax.driver.core.DataType.Name;
+import com.datastax.oss.driver.api.core.type.DataType;
 
 /**
  * Value object to capture custom conversion. {@link CassandraCustomConversions} also act as factory for

@@ -21,9 +21,9 @@ import org.springframework.data.mapping.model.SpELExpressionEvaluator;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.CodecRegistry;
-import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.UDTValue;
+import com.datastax.oss.driver.api.core.type.codec.registry.CodecRegistry;
+import com.datastax.oss.driver.api.core.type.DataType;
+import com.datastax.oss.driver.api.core.type.UserDefinedType;
 
 /**
  * {@link CassandraValueProvider} to read property values from a {@link UDTValue}.

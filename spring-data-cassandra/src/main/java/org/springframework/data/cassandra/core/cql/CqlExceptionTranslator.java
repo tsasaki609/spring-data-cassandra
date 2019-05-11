@@ -20,7 +20,7 @@ import org.springframework.dao.support.PersistenceExceptionTranslator;
 import org.springframework.data.cassandra.core.mapping.UnsupportedCassandraOperationException;
 import org.springframework.lang.Nullable;
 
-import com.datastax.driver.core.exceptions.DriverException;
+import com.datastax.oss.driver.api.core.DriverException;
 
 /**
  * Strategy interface for translating between {@link DriverException DriverExceptios} and Spring's data access

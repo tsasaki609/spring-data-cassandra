@@ -18,7 +18,7 @@ package org.springframework.data.cassandra.core.cql.session;
 import org.springframework.data.cassandra.SessionFactory;
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.Session;
+import com.datastax.oss.driver.api.core.session.Session;
 
 /**
  * Default {@link SessionFactory} implementation.

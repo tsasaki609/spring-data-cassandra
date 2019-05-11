@@ -21,8 +21,7 @@ import java.util.stream.StreamSupport;
 
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.Host;
-import com.datastax.driver.core.exceptions.DriverException;
+import com.datastax.oss.driver.api.core.DriverException;
 
 /**
  * {@link HostMapper} to to map hosts into {@link RingMember} objects.

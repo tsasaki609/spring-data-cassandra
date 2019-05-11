@@ -40,8 +40,7 @@ import org.springframework.data.mapping.PersistentProperty;
 import org.springframework.data.util.TypeInformation;
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.DataType.Name;
+import com.datastax.oss.driver.api.core.type.DataType;
 
 /**
  * Map {@link org.springframework.data.cassandra.core.query.Update} to CQL-specific data types.

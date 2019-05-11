@@ -23,10 +23,11 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.lang.Nullable;
 
-import com.datastax.driver.core.PreparedStatement;
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
+import com.datastax.oss.driver.api.core.cql.PreparedStatement;
+import com.datastax.oss.driver.api.core.cql.ResultSet;
+import com.datastax.oss.driver.api.core.cql.Row;
+import com.datastax.oss.driver.api.core.cql.Statement;
+
 
 /**
  * Interface specifying a basic set of CQL operations. Implemented by {@link CqlTemplate}. Not often used directly, but
@@ -492,7 +493,7 @@ public interface CqlOperations {
 	 * @return boolean value whether the statement was applied.
 	 * @throws DataAccessException if there is any problem executing the query.
 	 */
-	boolean execute(Statement statement) throws DataAccessException;
+	<S extends Statement<S>> boolean execute(Statement<S> statement) throws DataAccessException;
 
 	/**
 	 * Execute a query given static CQL, reading the {@link ResultSet} with a {@link ResultSetExtractor}.
@@ -507,7 +508,7 @@ public interface CqlOperations {
 	 * @see #query(String, ResultSetExtractor, Object...)
 	 */
 	@Nullable
-	<T> T query(Statement statement, ResultSetExtractor<T> resultSetExtractor) throws DataAccessException;
+	<S extends Statement<S>, T> T query(Statement<S> statement, ResultSetExtractor<T> resultSetExtractor) throws DataAccessException;
 
 	/**
 	 * Execute a query given static CQL, reading the {@link ResultSet} on a per-row basis with a
@@ -521,7 +522,7 @@ public interface CqlOperations {
 	 * @throws DataAccessException if there is any problem executing the query.
 	 * @see #query(String, RowCallbackHandler, Object[])
 	 */
-	void query(Statement statement, RowCallbackHandler rowCallbackHandler) throws DataAccessException;
+	<S extends Statement<S>> void query(Statement<S> statement, RowCallbackHandler rowCallbackHandler) throws DataAccessException;
 
 	/**
 	 * Execute a query given static CQL, mapping each row to a Java object via a {@link RowMapper}.
@@ -535,7 +536,7 @@ public interface CqlOperations {
 	 * @throws DataAccessException if there is any problem executing the query.
 	 * @see #query(String, RowMapper, Object[])
 	 */
-	<T> List<T> query(Statement statement, RowMapper<T> rowMapper) throws DataAccessException;
+	<S extends Statement<S>, T> List<T> query(Statement<S> statement, RowMapper<T> rowMapper) throws DataAccessException;
 
 	/**
 	 * Execute a query for a result {@link List}, given static CQL.
@@ -552,7 +553,7 @@ public interface CqlOperations {
 	 * @throws DataAccessException if there is any problem executing the query.
 	 * @see #queryForList(String, Object[])
 	 */
-	List<Map<String, Object>> queryForList(Statement statement) throws DataAccessException;
+	<S extends Statement<S>> List<Map<String, Object>> queryForList(Statement<S> statement) throws DataAccessException;
 
 	/**
 	 * Execute a query for a result {@link List}, given static CQL.
@@ -571,7 +572,7 @@ public interface CqlOperations {
 	 * @see #queryForList(String, Class, Object[])
 	 * @see SingleColumnRowMapper
 	 */
-	<T> List<T> queryForList(Statement statement, Class<T> elementType) throws DataAccessException;
+	<S extends Statement<S>, T> List<T> queryForList(Statement<S> statement, Class<T> elementType) throws DataAccessException;
 
 	/**
 	 * Execute a query for a result Map, given static CQL.
@@ -590,7 +591,7 @@ public interface CqlOperations {
 	 * @see #queryForMap(String, Object[])
 	 * @see ColumnMapRowMapper
 	 */
-	Map<String, Object> queryForMap(Statement statement) throws DataAccessException;
+	<S extends Statement<S>> Map<String, Object> queryForMap(Statement<S> statement) throws DataAccessException;
 
 	/**
 	 * Execute a query for a result object, given static CQL.
@@ -610,7 +611,7 @@ public interface CqlOperations {
 	 * @throws DataAccessException if there is any problem executing the query.
 	 * @see #queryForObject(String, Class, Object[])
 	 */
-	<T> T queryForObject(Statement statement, Class<T> requiredType) throws DataAccessException;
+	<S extends Statement<S>, T> T queryForObject(Statement<S> statement, Class<T> requiredType) throws DataAccessException;
 
 	/**
 	 * Execute a query given static CQL, mapping a single result row to a Java object via a {@link RowMapper}.
@@ -626,7 +627,7 @@ public interface CqlOperations {
 	 * @throws DataAccessException if there is any problem executing the query.
 	 * @see #queryForObject(String, RowMapper, Object[])
 	 */
-	<T> T queryForObject(Statement statement, RowMapper<T> rowMapper) throws DataAccessException;
+	<S extends Statement<S>, T> T queryForObject(Statement<S> statement, RowMapper<T> rowMapper) throws DataAccessException;
 
 	/**
 	 * Execute a query for a ResultSet, given static CQL.
@@ -642,7 +643,7 @@ public interface CqlOperations {
 	 * @throws DataAccessException if there is any problem executing the query.
 	 * @see #queryForResultSet(String, Object[])
 	 */
-	ResultSet queryForResultSet(Statement statement) throws DataAccessException;
+	<S extends Statement<S>> ResultSet queryForResultSet(Statement<S> statement) throws DataAccessException;
 
 	/**
 	 * Execute a query for Rows, given static CQL.
@@ -658,7 +659,7 @@ public interface CqlOperations {
 	 * @throws DataAccessException if there is any problem executing the query.
 	 * @see #queryForResultSet(String, Object[])
 	 */
-	Iterable<Row> queryForRows(Statement statement) throws DataAccessException;
+	<S extends Statement<S>> Iterable<Row> queryForRows(Statement<S> statement) throws DataAccessException;
 
 	// -------------------------------------------------------------------------
 	// Methods dealing with com.datastax.driver.core.PreparedStatement

@@ -23,7 +23,7 @@ import java.util.List;
 
 import org.springframework.data.cassandra.core.cql.CqlIdentifier;
 
-import com.datastax.driver.core.DataType;
+import com.datastax.oss.driver.api.core.type.DataType;
 
 /**
  * Object to support the configuration of user type specifications that have columns. This class can also be used as a

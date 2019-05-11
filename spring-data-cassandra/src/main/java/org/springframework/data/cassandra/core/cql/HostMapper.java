@@ -17,8 +17,7 @@ package org.springframework.data.cassandra.core.cql;
 
 import java.util.Collection;
 
-import com.datastax.driver.core.Host;
-import com.datastax.driver.core.exceptions.DriverException;
+import com.datastax.oss.driver.api.core.DriverException;
 
 /**
  * An interface used by {@link CqlTemplate} for mapping {@link Host}s of a {@link com.datastax.driver.core.Metadata} on

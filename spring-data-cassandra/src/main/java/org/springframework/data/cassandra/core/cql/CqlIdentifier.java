@@ -20,8 +20,8 @@ import java.util.regex.Pattern;
 
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.KeyspaceMetadata;
-import com.datastax.driver.core.TableMetadata;
+import com.datastax.oss.driver.api.core.metadata.schema.KeyspaceMetadata;
+import com.datastax.oss.driver.api.core.metadata.schema.TableMetadata;
 
 /**
  * This encapsulates the logic for CQL quoted and unquoted identifiers.

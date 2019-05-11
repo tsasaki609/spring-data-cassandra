@@ -24,8 +24,8 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.cassandra.core.query.CriteriaDefinition.Operator;
 import org.springframework.lang.Nullable;
 
-import com.datastax.driver.core.CodecRegistry;
-import com.datastax.driver.core.TypeCodec;
+import com.datastax.oss.driver.api.core.type.codec.registry.CodecRegistry;
+import com.datastax.oss.driver.api.core.type.codec.TypeCodec;
 
 /**
  * Utility methods for CQL serialization.

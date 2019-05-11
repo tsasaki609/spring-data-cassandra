@@ -19,8 +19,6 @@ import java.io.Serializable;
 
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.Host;
-
 /**
  * Domain object representing a Cassandra host.
  *

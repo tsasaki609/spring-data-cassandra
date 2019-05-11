@@ -15,8 +15,8 @@
  */
 package org.springframework.data.cassandra.core.cql;
 
-import com.datastax.driver.core.Row;
-import com.datastax.driver.core.exceptions.DriverException;
+import com.datastax.oss.driver.api.core.cql.Row;
+import com.datastax.oss.driver.api.core.DriverException;
 
 /**
  * An interface used by {@link CqlTemplate} for processing rows of a {@link com.datastax.driver.core.ResultSet} on a

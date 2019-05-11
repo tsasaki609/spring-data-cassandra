@@ -33,7 +33,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Order;
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.PagingState;
 
 /**
  * Query object representing {@link CriteriaDefinition}s, {@link Columns}, {@link Sort}, {@link PagingState} and

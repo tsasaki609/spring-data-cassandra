@@ -17,7 +17,7 @@ package org.springframework.data.cassandra.core.mapping.event;
 
 import org.springframework.data.cassandra.core.cql.CqlIdentifier;
 
-import com.datastax.driver.core.Statement;
+import com.datastax.oss.driver.api.core.cql.Statement;
 
 /**
  * Event being thrown after a single or a set of rows has/have been deleted.

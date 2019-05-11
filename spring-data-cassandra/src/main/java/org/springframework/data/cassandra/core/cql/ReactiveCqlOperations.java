@@ -26,9 +26,9 @@ import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.data.cassandra.ReactiveResultSet;
 import org.springframework.lang.Nullable;
 
-import com.datastax.driver.core.PreparedStatement;
-import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Statement;
+import com.datastax.oss.driver.api.core.cql.PreparedStatement;
+import com.datastax.oss.driver.api.core.cql.Row;
+import com.datastax.oss.driver.api.core.cql.Statement;
 
 /**
  * Interface specifying a basic set of CQL operations executed in a reactive fashion. Implemented by
@@ -245,7 +245,7 @@ public interface ReactiveCqlOperations {
 	 * @return boolean value whether the statement was applied.
 	 * @throws DataAccessException if there is any problem executing the query.
 	 */
-	Mono<Boolean> execute(Statement statement) throws DataAccessException;
+	<S extends Statement<S>> Mono<Boolean> execute(Statement<S> statement) throws DataAccessException;
 
 	/**
 	 * Execute a query given static CQL, reading the {@link ReactiveResultSet} with a {@link ReactiveResultSetExtractor}.
@@ -259,7 +259,7 @@ public interface ReactiveCqlOperations {
 	 * @throws DataAccessException if there is any problem executing the query.
 	 * @see #query(String, ReactiveResultSetExtractor, Object...)
 	 */
-	<T> Flux<T> query(Statement statement, ReactiveResultSetExtractor<T> rse) throws DataAccessException;
+	<S extends Statement<S>, T> Flux<T> query(Statement<S> statement, ReactiveResultSetExtractor<T> rse) throws DataAccessException;
 
 	/**
 	 * Execute a query given static CQL, mapping each row to a Java object via a {@link RowMapper}.
@@ -273,7 +273,7 @@ public interface ReactiveCqlOperations {
 	 * @throws DataAccessException if there is any problem executing the query.
 	 * @see #query(String, RowMapper, Object[])
 	 */
-	<T> Flux<T> query(Statement statement, RowMapper<T> rowMapper) throws DataAccessException;
+	<S extends Statement<S>, T> Flux<T> query(Statement<S> statement, RowMapper<T> rowMapper) throws DataAccessException;
 
 	/**
 	 * Execute a query given static CQL, mapping a single result row to a Java object via a {@link RowMapper}.
@@ -289,7 +289,7 @@ public interface ReactiveCqlOperations {
 	 * @throws DataAccessException if there is any problem executing the query.
 	 * @see #queryForObject(String, RowMapper, Object[])
 	 */
-	<T> Mono<T> queryForObject(Statement statement, RowMapper<T> rowMapper) throws DataAccessException;
+	<S extends Statement<S>, T> Mono<T> queryForObject(Statement<S> statement, RowMapper<T> rowMapper) throws DataAccessException;
 
 	/**
 	 * Execute a query for a result object, given static CQL.
@@ -309,7 +309,7 @@ public interface ReactiveCqlOperations {
 	 * @throws DataAccessException if there is any problem executing the query.
 	 * @see #queryForObject(String, Class, Object[])
 	 */
-	<T> Mono<T> queryForObject(Statement statement, Class<T> requiredType) throws DataAccessException;
+	<S extends Statement<S>, T> Mono<T> queryForObject(Statement<S> statement, Class<T> requiredType) throws DataAccessException;
 
 	/**
 	 * Execute a query for a result Map, given static CQL.
@@ -328,7 +328,7 @@ public interface ReactiveCqlOperations {
 	 * @see #queryForMap(String, Object[])
 	 * @see ColumnMapRowMapper
 	 */
-	Mono<Map<String, Object>> queryForMap(Statement statement) throws DataAccessException;
+	<S extends Statement<S>> Mono<Map<String, Object>> queryForMap(Statement<S> statement) throws DataAccessException;
 
 	/**
 	 * Execute a query for a result {@link Flux}, given static CQL.
@@ -347,7 +347,7 @@ public interface ReactiveCqlOperations {
 	 * @see #queryForFlux(String, Class, Object[])
 	 * @see SingleColumnRowMapper
 	 */
-	<T> Flux<T> queryForFlux(Statement statement, Class<T> elementType) throws DataAccessException;
+	<S extends Statement<S>, T> Flux<T> queryForFlux(Statement<S> statement, Class<T> elementType) throws DataAccessException;
 
 	/**
 	 * Execute a query for a result {@link Flux}, given static CQL.
@@ -364,7 +364,7 @@ public interface ReactiveCqlOperations {
 	 * @throws DataAccessException if there is any problem executing the query.
 	 * @see #queryForFlux(String, Object[])
 	 */
-	Flux<Map<String, Object>> queryForFlux(Statement statement) throws DataAccessException;
+	<S extends Statement<S>> Flux<Map<String, Object>> queryForFlux(Statement<S> statement) throws DataAccessException;
 
 	/**
 	 * Execute a query for a ResultSet, given static CQL.
@@ -380,7 +380,7 @@ public interface ReactiveCqlOperations {
 	 * @throws DataAccessException if there is any problem executing the query.
 	 * @see #queryForResultSet(String, Object[])
 	 */
-	Mono<ReactiveResultSet> queryForResultSet(Statement statement) throws DataAccessException;
+	<S extends Statement<S>> Mono<ReactiveResultSet> queryForResultSet(Statement<S> statement) throws DataAccessException;
 
 	/**
 	 * Execute a query for Rows, given static CQL.
@@ -396,7 +396,7 @@ public interface ReactiveCqlOperations {
 	 * @throws DataAccessException if there is any problem executing the query.
 	 * @see #queryForResultSet(String, Object[])
 	 */
-	Flux<Row> queryForRows(Statement statement) throws DataAccessException;
+	<S extends Statement<S>> Flux<Row> queryForRows(Statement<S> statement) throws DataAccessException;
 
 	// -------------------------------------------------------------------------
 	// Methods dealing with prepared statements

@@ -31,7 +31,7 @@ import org.springframework.data.cassandra.core.query.Update;
 import org.springframework.data.domain.Slice;
 import org.springframework.lang.Nullable;
 
-import com.datastax.driver.core.Statement;
+import com.datastax.oss.driver.api.core.cql.Statement;
 
 /**
  * Interface specifying a basic set of Cassandra operations. Implemented by {@link CassandraTemplate}. Not often used
@@ -131,7 +131,7 @@ public interface CassandraOperations extends FluentCassandraOperations {
 	 * @return the converted results
 	 * @throws DataAccessException if there is any problem executing the query.
 	 */
-	<T> List<T> select(Statement statement, Class<T> entityClass) throws DataAccessException;
+	<S extends Statement<S>, T> List<T> select(Statement<S> statement, Class<T> entityClass) throws DataAccessException;
 
 	/**
 	 * Execute a {@code SELECT} query with paging and convert the result set to a {@link Slice} of entities. A sliced
@@ -143,7 +143,7 @@ public interface CassandraOperations extends FluentCassandraOperations {
 	 * @throws DataAccessException if there is any problem executing the query.
 	 * @since 2.0
 	 */
-	<T> Slice<T> slice(Statement statement, Class<T> entityClass) throws DataAccessException;
+	<S extends Statement<S>, T> Slice<T> slice(Statement<S> statement, Class<T> entityClass) throws DataAccessException;
 
 	/**
 	 * Execute a {@code SELECT} query and convert the resulting items to a {@link Iterator} of entities.
@@ -157,7 +157,7 @@ public interface CassandraOperations extends FluentCassandraOperations {
 	 * @throws DataAccessException if there is any problem executing the query.
 	 * @since 1.5
 	 */
-	<T> Stream<T> stream(Statement statement, Class<T> entityClass) throws DataAccessException;
+	<S extends Statement<S>, T> Stream<T> stream(Statement<S> statement, Class<T> entityClass) throws DataAccessException;
 
 	/**
 	 * Execute a {@code SELECT} query and convert the resulting item to an entity.
@@ -168,7 +168,7 @@ public interface CassandraOperations extends FluentCassandraOperations {
 	 * @throws DataAccessException if there is any problem executing the query.
 	 */
 	@Nullable
-	<T> T selectOne(Statement statement, Class<T> entityClass) throws DataAccessException;
+	<S extends Statement<S>, T> T selectOne(Statement<S> statement, Class<T> entityClass) throws DataAccessException;
 
 	// -------------------------------------------------------------------------
 	// Methods dealing with org.springframework.data.cassandra.core.query.Query

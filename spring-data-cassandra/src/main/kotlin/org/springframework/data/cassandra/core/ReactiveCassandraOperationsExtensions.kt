@@ -15,7 +15,7 @@
  */
 package org.springframework.data.cassandra.core
 
-import com.datastax.driver.core.Statement
+import com.datastax.oss.driver.api.core.cql.Statement
 import org.springframework.data.cassandra.core.query.Query
 import org.springframework.data.cassandra.core.query.Update
 import reactor.core.publisher.Flux
@@ -67,26 +67,26 @@ inline fun <reified T : Any> ReactiveCassandraOperations.selectOne(cql: String):
  * Extension for [ReactiveCassandraOperations.select] providing a [KClass] based variant.
  */
 @Deprecated("Since 2.2, use the reified variant", replaceWith = ReplaceWith("select<T>(statement)"))
-fun <T : Any> ReactiveCassandraOperations.select(statement: Statement, entityClass: KClass<T>): Flux<T> =
+fun <S : Statement<S>, T : Any> ReactiveCassandraOperations.select(statement: Statement<S>, entityClass: KClass<T>): Flux<T> =
 		select(statement, entityClass.java)
 
 /**
  * Extension for [ReactiveCassandraOperations.select] leveraging reified type parameters.
  */
-inline fun <reified T : Any> ReactiveCassandraOperations.select(statement: Statement): Flux<T> =
+inline fun <S : Statement<S>, reified T : Any> ReactiveCassandraOperations.select(statement: Statement<S>): Flux<T> =
 		select(statement, T::class.java)
 
 /**
  * Extension for [ReactiveCassandraOperations.selectOne] providing a [KClass] based variant.
  */
 @Deprecated("Since 2.2, use the reified variant", replaceWith = ReplaceWith("selectOne<T>(statement)"))
-fun <T : Any> ReactiveCassandraOperations.selectOne(statement: Statement, entityClass: KClass<T>): Mono<T> =
+fun <S : Statement<S>, T : Any> ReactiveCassandraOperations.selectOne(statement: Statement<S>, entityClass: KClass<T>): Mono<T> =
 		selectOne(statement, entityClass.java)
 
 /**
  * Extension for [ReactiveCassandraOperations.selectOne] leveraging reified type parameters.
  */
-inline fun <reified T : Any> ReactiveCassandraOperations.selectOne(statement: Statement): Mono<T> =
+inline fun <S : Statement<S>, reified T : Any> ReactiveCassandraOperations.selectOne(statement: Statement<S>): Mono<T> =
 		selectOne(statement, T::class.java)
 
 // -------------------------------------------------------------------------

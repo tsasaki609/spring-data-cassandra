@@ -15,9 +15,9 @@
  */
 package org.springframework.data.cassandra.core.cql
 
-import com.datastax.driver.core.ResultSet
-import com.datastax.driver.core.Row
-import com.datastax.driver.core.Statement
+import com.datastax.oss.driver.api.core.cql.ResultSet
+import com.datastax.oss.driver.api.core.cql.Row
+import com.datastax.oss.driver.api.core.cql.Statement
 import org.springframework.util.concurrent.ListenableFuture
 import kotlin.reflect.KClass
 
@@ -64,13 +64,13 @@ fun <T : Any> AsyncCqlOperations.queryForObject(cql: String, vararg args: Any, f
  * Extension for [AsyncCqlOperations.queryForObject] providing a [KClass] based variant.
  */
 @Deprecated("Since 2.2, use the reified variant", replaceWith = ReplaceWith("queryForObject<T>(statement)"))
-fun <T : Any> AsyncCqlOperations.queryForObject(statement: Statement, entityClass: KClass<T>): ListenableFuture<T?> =
+fun <S : Statement<S>, T : Any> AsyncCqlOperations.queryForObject(statement: Statement<S>, entityClass: KClass<T>): ListenableFuture<T?> =
 		queryForObject(statement, entityClass.java)
 
 /**
  * Extension for [AsyncCqlOperations.queryForObject] leveraging reified type parameters.
  */
-inline fun <reified T : Any> AsyncCqlOperations.queryForObject(statement: Statement): ListenableFuture<T?> =
+inline fun <S : Statement<S>, reified T : Any> AsyncCqlOperations.queryForObject(statement: Statement<S>): ListenableFuture<T?> =
 		queryForObject(statement, T::class.java)
 
 /**
@@ -91,14 +91,14 @@ inline fun <reified T : Any> AsyncCqlOperations.queryForList(cql: String, vararg
  * Extension for [AsyncCqlOperations.queryForList] providing a [KClass] based variant.
  */
 @Deprecated("Since 2.2, use the reified variant", replaceWith = ReplaceWith("queryForList<T>(statement)"))
-fun <T : Any> AsyncCqlOperations.queryForList(statement: Statement, entityClass: KClass<T>): ListenableFuture<List<T>> =
+fun <S : Statement<S>, T : Any> AsyncCqlOperations.queryForList(statement: Statement<S>, entityClass: KClass<T>): ListenableFuture<List<T>> =
 		queryForList(statement, entityClass.java)
 
 /**
  * Extension for [AsyncCqlOperations.queryForList] leveraging reified type parameters.
  */
 @Suppress("EXTENSION_SHADOWED_BY_MEMBER")
-inline fun <reified T : Any> AsyncCqlOperations.queryForList(statement: Statement): ListenableFuture<List<T>> =
+inline fun <S : Statement<S>, reified T : Any> AsyncCqlOperations.queryForList(statement: Statement<S>): ListenableFuture<List<T>> =
 		queryForList(statement, T::class.java)
 
 /**

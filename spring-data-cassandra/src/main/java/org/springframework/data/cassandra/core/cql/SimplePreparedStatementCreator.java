@@ -17,9 +17,9 @@ package org.springframework.data.cassandra.core.cql;
 
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.PreparedStatement;
-import com.datastax.driver.core.Session;
-import com.datastax.driver.core.exceptions.DriverException;
+import com.datastax.oss.driver.api.core.cql.PreparedStatement;
+import com.datastax.oss.driver.api.core.session.Session;
+import com.datastax.oss.driver.api.core.DriverException;
 
 /**
  * Trivial implementation of {@link PreparedStatementCreator}. This prepared statement creator simply prepares a

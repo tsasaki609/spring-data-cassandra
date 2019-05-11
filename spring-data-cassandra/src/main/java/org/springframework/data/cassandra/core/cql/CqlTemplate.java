@@ -27,15 +27,14 @@ import org.springframework.data.cassandra.SessionFactory;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.BoundStatement;
-import com.datastax.driver.core.Host;
-import com.datastax.driver.core.PreparedStatement;
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Session;
-import com.datastax.driver.core.SimpleStatement;
-import com.datastax.driver.core.Statement;
-import com.datastax.driver.core.exceptions.DriverException;
+import com.datastax.oss.driver.api.core.cql.BoundStatement;
+import com.datastax.oss.driver.api.core.cql.PreparedStatement;
+import com.datastax.oss.driver.api.core.cql.ResultSet;
+import com.datastax.oss.driver.api.core.cql.Row;
+import com.datastax.oss.driver.api.core.session.Session;
+import com.datastax.oss.driver.api.core.cql.SimpleStatement;
+import com.datastax.oss.driver.api.core.cql.Statement;
+import com.datastax.oss.driver.api.core.DriverException;
 
 /**
  * <b>This is the central class in the CQL core package.</b> It simplifies the use of CQL and helps to avoid common
@@ -283,7 +282,7 @@ public class CqlTemplate extends CassandraAccessor implements CqlOperations {
 	 * @see org.springframework.data.cassandra.core.cqlOperations#query(com.datastax.driver.core.Statement, org.springframework.data.cassandra.core.cql.ResultSetExtractor)
 	 */
 	@Override
-	public <T> T query(Statement statement, ResultSetExtractor<T> resultSetExtractor) throws DataAccessException {
+	public <S extends Statement<S>, T> T query(Statement<S> statement, ResultSetExtractor<T> resultSetExtractor) throws DataAccessException {
 
 		Assert.notNull(statement, "CQL Statement must not be null");
 		Assert.notNull(resultSetExtractor, "ResultSetExtractor must not be null");
@@ -313,7 +312,7 @@ public class CqlTemplate extends CassandraAccessor implements CqlOperations {
 	 * @see org.springframework.data.cassandra.core.cqlOperations#query(com.datastax.driver.core.Statement, org.springframework.data.cassandra.core.cql.RowMapper)
 	 */
 	@Override
-	public <T> List<T> query(Statement statement, RowMapper<T> rowMapper) throws DataAccessException {
+	public <S extends Statement<S>, T> List<T> query(Statement<S> statement, RowMapper<T> rowMapper) throws DataAccessException {
 		// noinspection ConstantConditions
 		return query(statement, newResultSetExtractor(rowMapper));
 	}
@@ -333,7 +332,7 @@ public class CqlTemplate extends CassandraAccessor implements CqlOperations {
 	 * @see org.springframework.data.cassandra.core.cqlOperations#queryForList(com.datastax.driver.core.Statement, java.lang.Class)
 	 */
 	@Override
-	public <T> List<T> queryForList(Statement statement, Class<T> elementType) throws DataAccessException {
+	public <S extends Statement<S>, T> List<T> queryForList(Statement<S> statement, Class<T> elementType) throws DataAccessException {
 		// noinspection ConstantConditions
 		return query(statement, newResultSetExtractor(newSingleColumnRowMapper(elementType)));
 	}
@@ -353,7 +352,7 @@ public class CqlTemplate extends CassandraAccessor implements CqlOperations {
 	 * @see org.springframework.data.cassandra.core.cqlOperations#queryForObject(com.datastax.driver.core.Statement, java.lang.Class)
 	 */
 	@Override
-	public <T> T queryForObject(Statement statement, Class<T> requiredType) throws DataAccessException {
+	public <S extends Statement<S>, T> T queryForObject(Statement<S> statement, Class<T> requiredType) throws DataAccessException {
 		return queryForObject(statement, newSingleColumnRowMapper(requiredType));
 	}
 
@@ -362,7 +361,7 @@ public class CqlTemplate extends CassandraAccessor implements CqlOperations {
 	 * @see org.springframework.data.cassandra.core.cqlOperations#queryForObject(com.datastax.driver.core.Statement, org.springframework.data.cassandra.core.cql.RowMapper)
 	 */
 	@Override
-	public <T> T queryForObject(Statement statement, RowMapper<T> rowMapper) throws DataAccessException {
+	public <S extends Statement<S>, T> T queryForObject(Statement<S> statement, RowMapper<T> rowMapper) throws DataAccessException {
 		return DataAccessUtils.requiredSingleResult(query(statement, newResultSetExtractor(rowMapper)));
 	}
 

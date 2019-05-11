@@ -19,7 +19,7 @@ import org.reactivestreams.Publisher;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.cassandra.ReactiveResultSet;
 
-import com.datastax.driver.core.exceptions.DriverException;
+import com.datastax.oss.driver.api.core.DriverException;
 
 /**
  * Callback interface used by {@link ReactiveCqlTemplate}'s query methods. Implementations of this interface perform the

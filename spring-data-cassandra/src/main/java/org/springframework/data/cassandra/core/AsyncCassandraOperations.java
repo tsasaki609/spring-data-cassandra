@@ -29,7 +29,7 @@ import org.springframework.data.cassandra.core.query.Update;
 import org.springframework.data.domain.Slice;
 import org.springframework.util.concurrent.ListenableFuture;
 
-import com.datastax.driver.core.Statement;
+import com.datastax.oss.driver.api.core.cql.Statement;
 
 /**
  * Interface specifying a basic set of asynchronous Cassandra operations. Implemented by {@link AsyncCassandraTemplate}.

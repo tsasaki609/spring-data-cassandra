@@ -22,8 +22,6 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.PagingState;
-
 /**
  * Cassandra-specific {@link PageRequest} implementation providing access to {@link PagingState}. This class allows
  * creation of the first page request and represents through Cassandra paging is based on the progress of fetched pages

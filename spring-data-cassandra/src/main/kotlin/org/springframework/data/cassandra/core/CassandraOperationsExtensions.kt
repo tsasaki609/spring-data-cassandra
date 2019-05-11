@@ -15,7 +15,7 @@
  */
 package org.springframework.data.cassandra.core
 
-import com.datastax.driver.core.Statement
+import com.datastax.oss.driver.api.core.cql.Statement
 import org.springframework.data.cassandra.core.cql.CqlIdentifier
 import org.springframework.data.cassandra.core.query.Query
 import org.springframework.data.cassandra.core.query.Update
@@ -94,52 +94,52 @@ inline fun <reified T : Any> CassandraOperations.selectOne(cql: String): T? =
  * Extension for [CassandraOperations.select] providing a [KClass] based variant.
  */
 @Deprecated("Since 2.2, use the reified variant", replaceWith = ReplaceWith("select<T>(statement)"))
-fun <T : Any> CassandraOperations.select(statement: Statement, entityClass: KClass<T>): List<T> =
+fun <S : Statement<S>, T : Any> CassandraOperations.select(statement: Statement<S>, entityClass: KClass<T>): List<T> =
 		select(statement, entityClass.java)
 
 /**
  * Extension for [CassandraOperations.select] leveraging reified type parameters.
  */
-inline fun <reified T : Any> CassandraOperations.select(statement: Statement): List<T> =
+inline fun <S : Statement<S>, reified T : Any> CassandraOperations.select(statement: Statement<S>): List<T> =
 		select(statement, T::class.java)
 
 /**
  * Extension for [CassandraOperations.slice] providing a [KClass] based variant.
  */
 @Deprecated("Since 2.2, use the reified variant", replaceWith = ReplaceWith("slice<T>(statement)"))
-fun <T : Any> CassandraOperations.slice(statement: Statement, entityClass: KClass<T>): Slice<T> =
+fun <S : Statement<S>, T : Any> CassandraOperations.slice(statement: Statement<S>, entityClass: KClass<T>): Slice<T> =
 		slice(statement, entityClass.java)
 
 /**
  * Extension for [CassandraOperations.slice] leveraging reified type parameters.
  */
-inline fun <reified T : Any> CassandraOperations.slice(statement: Statement): Slice<T> =
+inline fun <S : Statement<S>, reified T : Any> CassandraOperations.slice(statement: Statement<S>): Slice<T> =
 		slice(statement, T::class.java)
 
 /**
  * Extension for [CassandraOperations.stream] providing a [KClass] based variant.
  */
 @Deprecated("Since 2.2, use the reified variant", replaceWith = ReplaceWith("stream<T>(statement)"))
-fun <T : Any> CassandraOperations.stream(statement: Statement, entityClass: KClass<T>): Stream<T> =
+fun <S : Statement<S>, T : Any> CassandraOperations.stream(statement: Statement<S>, entityClass: KClass<T>): Stream<T> =
 		stream(statement, entityClass.java)
 
 /**
  * Extension for [CassandraOperations.stream] leveraging reified type parameters.
  */
-inline fun <reified T : Any> CassandraOperations.stream(statement: Statement): Stream<T> =
+inline fun <S : Statement<S>, reified T : Any> CassandraOperations.stream(statement: Statement<S>): Stream<T> =
 		stream(statement, T::class.java)
 
 /**
  * Extension for [CassandraOperations.selectOne] providing a [KClass] based variant.
  */
 @Deprecated("Since 2.2, use the reified variant", replaceWith = ReplaceWith("selectOne<T>(statement)"))
-fun <T : Any> CassandraOperations.selectOne(statement: Statement, entityClass: KClass<T>): T? =
+fun <S : Statement<S>, T : Any> CassandraOperations.selectOne(statement: Statement<S>, entityClass: KClass<T>): T? =
 		selectOne(statement, entityClass.java)
 
 /**
  * Extension for [CassandraOperations.selectOne] leveraging reified type parameters.
  */
-inline fun <reified T : Any> CassandraOperations.selectOne(statement: Statement): T? =
+inline fun <S : Statement<S>, reified T : Any> CassandraOperations.selectOne(statement: Statement<S>): T? =
 		selectOne(statement, T::class.java)
 
 // -------------------------------------------------------------------------

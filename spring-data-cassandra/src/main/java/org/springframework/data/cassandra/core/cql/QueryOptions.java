@@ -23,9 +23,8 @@ import lombok.EqualsAndHashCode;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.ConsistencyLevel;
-import com.datastax.driver.core.SocketOptions;
-import com.datastax.driver.core.policies.RetryPolicy;
+import com.datastax.oss.driver.api.core.ConsistencyLevel;
+import com.datastax.oss.driver.api.core.retry.RetryPolicy;
 
 /**
  * Cassandra Query Options for queries. {@link QueryOptions} allow tuning of various query options on a per-request

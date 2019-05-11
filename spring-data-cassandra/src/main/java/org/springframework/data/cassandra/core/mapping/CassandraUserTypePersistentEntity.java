@@ -21,7 +21,7 @@ import org.springframework.data.util.TypeInformation;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.UserType;
+import com.datastax.oss.driver.api.core.type.UserDefinedType;
 
 /**
  * {@link org.springframework.data.mapping.PersistentEntity} for a mapped user-defined type (UDT). A mapped UDT consists

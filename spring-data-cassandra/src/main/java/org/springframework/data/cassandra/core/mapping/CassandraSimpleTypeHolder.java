@@ -27,13 +27,12 @@ import java.util.stream.Collectors;
 import org.springframework.data.mapping.model.SimpleTypeHolder;
 import org.springframework.lang.Nullable;
 
-import com.datastax.driver.core.CodecRegistry;
-import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.DataType.Name;
-import com.datastax.driver.core.Row;
-import com.datastax.driver.core.TupleValue;
-import com.datastax.driver.core.TypeCodec;
-import com.datastax.driver.core.UDTValue;
+import com.datastax.oss.driver.api.core.type.codec.registry.CodecRegistry;
+import com.datastax.oss.driver.api.core.type.DataType;
+import com.datastax.oss.driver.api.core.cql.Row;
+import com.datastax.oss.driver.api.core.data.TupleValue;
+import com.datastax.oss.driver.api.core.data.UdtValue;
+
 import com.google.common.reflect.TypeToken;
 
 /**

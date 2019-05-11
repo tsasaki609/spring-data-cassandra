@@ -28,7 +28,7 @@ import org.springframework.data.cassandra.core.mapping.CassandraType;
 import org.springframework.data.convert.ReadingConverter;
 import org.springframework.data.convert.WritingConverter;
 
-import com.datastax.driver.core.DataType.Name;
+import com.datastax.oss.driver.api.core.type.DataType;
 
 /**
  * Helper class to register JodaTime specific {@link Converter} implementations in case the library is present on the

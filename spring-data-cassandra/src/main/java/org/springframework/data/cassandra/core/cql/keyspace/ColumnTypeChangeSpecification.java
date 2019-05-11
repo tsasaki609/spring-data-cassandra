@@ -18,7 +18,7 @@ package org.springframework.data.cassandra.core.cql.keyspace;
 import org.springframework.data.cassandra.core.cql.CqlIdentifier;
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.DataType;
+import com.datastax.oss.driver.api.core.type.DataType;
 
 /**
  * Base value object class for column changes that include {@link DataType} information.

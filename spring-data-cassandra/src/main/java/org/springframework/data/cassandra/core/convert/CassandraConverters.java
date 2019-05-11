@@ -31,8 +31,7 @@ import org.springframework.data.convert.ReadingConverter;
 import org.springframework.util.Assert;
 import org.springframework.util.NumberUtils;
 
-import com.datastax.driver.core.LocalDate;
-import com.datastax.driver.core.Row;
+import com.datastax.oss.driver.api.core.cql.Row;
 
 /**
  * Wrapper class to contain useful converters for the usage with Cassandra.

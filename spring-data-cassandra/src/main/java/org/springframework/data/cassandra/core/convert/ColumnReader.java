@@ -21,12 +21,11 @@ import org.springframework.data.cassandra.core.cql.CqlIdentifier;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.CodecRegistry;
-import com.datastax.driver.core.ColumnDefinitions;
-import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.DataType.Name;
-import com.datastax.driver.core.Row;
-import com.datastax.driver.core.TypeCodec;
+import com.datastax.oss.driver.api.core.type.codec.registry.CodecRegistry;
+import com.datastax.oss.driver.api.core.cql.ColumnDefinitions;
+import com.datastax.oss.driver.api.core.type.DataType;
+import com.datastax.oss.driver.api.core.cql.Row;
+import com.datastax.oss.driver.api.core.type.codec.TypeCodec;
 
 /**
  * Helpful class to read a column's value from a row, with possible type conversion.

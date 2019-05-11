@@ -19,9 +19,8 @@ import java.util.List;
 
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.Cluster;
-import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.TupleType;
+import com.datastax.oss.driver.api.core.type.DataType;
+import com.datastax.oss.driver.api.core.type.TupleType;
 
 /**
  * Default {@link TupleTypeFactory} implementation using Cluster {@link com.datastax.driver.core.Metadata} to create

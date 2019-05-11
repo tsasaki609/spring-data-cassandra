@@ -20,10 +20,8 @@ import static org.springframework.data.cassandra.core.cql.CqlIdentifier.*;
 import org.springframework.data.cassandra.core.cql.CqlIdentifier;
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.DataType.CollectionType;
-import com.datastax.driver.core.DataType.Name;
-import com.datastax.driver.core.UserType;
+import com.datastax.oss.driver.api.core.type.DataType;
+import com.datastax.oss.driver.api.core.type.UserDefinedType;
 
 /**
  * {@link com.datastax.driver.core.UserType} utility methods. Mainly for internal use within the framework.

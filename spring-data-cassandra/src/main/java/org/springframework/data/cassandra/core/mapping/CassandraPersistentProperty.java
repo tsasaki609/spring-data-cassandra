@@ -26,7 +26,7 @@ import org.springframework.data.mapping.PersistentProperty;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.DataType;
+import com.datastax.oss.driver.api.core.type.DataType;
 
 /**
  * Cassandra specific {@link org.springframework.data.mapping.PersistentProperty} extension.

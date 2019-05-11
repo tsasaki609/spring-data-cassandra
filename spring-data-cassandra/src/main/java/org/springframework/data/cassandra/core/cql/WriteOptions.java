@@ -24,8 +24,8 @@ import java.util.concurrent.TimeUnit;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.ConsistencyLevel;
-import com.datastax.driver.core.policies.RetryPolicy;
+import com.datastax.oss.driver.api.core.ConsistencyLevel;
+import com.datastax.oss.driver.api.core.retry.RetryPolicy;
 
 /**
  * Cassandra Write Options are an extension to {@link QueryOptions} for write operations. {@link WriteOptions}allow

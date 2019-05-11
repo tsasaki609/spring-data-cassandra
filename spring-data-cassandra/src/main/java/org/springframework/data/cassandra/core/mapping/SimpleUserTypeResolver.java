@@ -19,9 +19,8 @@ import org.springframework.data.cassandra.core.cql.CqlIdentifier;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.Cluster;
-import com.datastax.driver.core.KeyspaceMetadata;
-import com.datastax.driver.core.UserType;
+import com.datastax.oss.driver.api.core.metadata.schema.KeyspaceMetadata;
+import com.datastax.oss.driver.api.core.type.UserDefinedType;
 
 /**
  * Default implementation of {@link UserTypeResolver} that resolves {@link UserType} by their name from

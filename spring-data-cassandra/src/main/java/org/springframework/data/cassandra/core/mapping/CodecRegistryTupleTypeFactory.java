@@ -19,10 +19,10 @@ import java.util.List;
 
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.CodecRegistry;
-import com.datastax.driver.core.DataType;
-import com.datastax.driver.core.ProtocolVersion;
-import com.datastax.driver.core.TupleType;
+import com.datastax.oss.driver.api.core.type.codec.registry.CodecRegistry;
+import com.datastax.oss.driver.api.core.type.DataType;
+import com.datastax.oss.driver.api.core.type.TupleType;
+import com.datastax.oss.driver.api.core.ProtocolVersion;
 
 /**
  * {@link CodecRegistry}-based {@link TupleTypeFactory} using

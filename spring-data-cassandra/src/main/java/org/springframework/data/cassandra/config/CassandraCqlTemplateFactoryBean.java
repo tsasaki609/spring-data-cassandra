@@ -21,7 +21,7 @@ import org.springframework.data.cassandra.core.cql.CqlTemplate;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.Session;
+import com.datastax.oss.driver.api.core.session.Session;
 
 /**
  * Factory for configuring a {@link CqlTemplate}.

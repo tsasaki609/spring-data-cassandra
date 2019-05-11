@@ -21,7 +21,7 @@ import java.util.List;
 
 import org.springframework.data.cassandra.core.cql.CqlIdentifier;
 
-import com.datastax.driver.core.DataType;
+import com.datastax.oss.driver.api.core.type.DataType;
 
 /**
  * Object to configure a {@code ALTER TABLE} specification.

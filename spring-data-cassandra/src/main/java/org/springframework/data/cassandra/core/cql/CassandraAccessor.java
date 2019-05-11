@@ -28,14 +28,14 @@ import org.springframework.data.cassandra.core.cql.session.DefaultSessionFactory
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.ConsistencyLevel;
-import com.datastax.driver.core.PreparedStatement;
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Session;
-import com.datastax.driver.core.Statement;
-import com.datastax.driver.core.exceptions.DriverException;
-import com.datastax.driver.core.policies.RetryPolicy;
-import com.datastax.driver.core.querybuilder.QueryBuilder;
+import com.datastax.oss.driver.api.core.ConsistencyLevel;
+import com.datastax.oss.driver.api.core.cql.PreparedStatement;
+import com.datastax.oss.driver.api.core.cql.ResultSet;
+import com.datastax.oss.driver.api.core.session.Session;
+import com.datastax.oss.driver.api.core.cql.Statement;
+import com.datastax.oss.driver.api.core.DriverException;
+import com.datastax.oss.driver.api.core.retry.RetryPolicy;
+import com.datastax.oss.driver.api.querybuilder.QueryBuilder;
 
 /**
  * {@link CassandraAccessor} provides access to a Cassandra {@link SessionFactory} and the
@@ -72,13 +72,13 @@ public class CassandraAccessor implements InitializingBean {
 	 * If this variable is set to a value, it will be used for setting the {@code consistencyLevel} property on statements
 	 * used for query processing.
 	 */
-	private @Nullable com.datastax.driver.core.ConsistencyLevel consistencyLevel;
+	private @Nullable ConsistencyLevel consistencyLevel;
 
 	/**
 	 * If this variable is set to a value, it will be used for setting the {@code retryPolicy} property on statements used
 	 * for query processing.
 	 */
-	private @Nullable com.datastax.driver.core.policies.RetryPolicy retryPolicy;
+	private @Nullable RetryPolicy retryPolicy;
 
 	private @Nullable SessionFactory sessionFactory;
 

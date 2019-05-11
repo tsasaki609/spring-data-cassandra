@@ -28,7 +28,7 @@ import org.springframework.data.convert.ReadingConverter;
 import org.springframework.data.convert.WritingConverter;
 import org.springframework.util.ClassUtils;
 
-import com.datastax.driver.core.DataType.Name;
+import com.datastax.oss.driver.api.core.type.DataType;
 
 /**
  * Helper class to register JSR-310 specific {@link Converter} implementations to convert between Cassandra types in

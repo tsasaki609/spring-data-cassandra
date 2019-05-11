@@ -15,7 +15,7 @@
  */
 package org.springframework.data.cassandra;
 
-import com.datastax.driver.core.Session;
+import com.datastax.oss.driver.api.core.session.Session;
 
 /**
  * A factory for Apache Cassandra sessions.

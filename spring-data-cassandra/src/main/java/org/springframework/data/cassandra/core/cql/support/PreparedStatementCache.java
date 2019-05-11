@@ -17,9 +17,8 @@ package org.springframework.data.cassandra.core.cql.support;
 
 import java.util.function.Supplier;
 
-import com.datastax.driver.core.PreparedStatement;
-import com.datastax.driver.core.RegularStatement;
-import com.datastax.driver.core.Session;
+import com.datastax.oss.driver.api.core.cql.PreparedStatement;
+import com.datastax.oss.driver.api.core.session.Session;
 
 /**
  * Cache interface to synchronously prepare CQL statements.

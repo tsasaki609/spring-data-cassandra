@@ -15,7 +15,7 @@
  */
 package org.springframework.data.cassandra.core.convert;
 
-import com.datastax.driver.core.Row;
+import com.datastax.oss.driver.api.core.cql.Row;
 
 /**
  * {@link CassandraValueProvider} providing values based on a {@link Row}.

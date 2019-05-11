@@ -17,8 +17,8 @@ package org.springframework.data.cassandra.core.cql;
 
 import org.springframework.dao.DataAccessException;
 
-import com.datastax.driver.core.Session;
-import com.datastax.driver.core.exceptions.DriverException;
+import com.datastax.oss.driver.api.core.session.Session;
+import com.datastax.oss.driver.api.core.DriverException;
 
 /**
  * Generic callback interface for code that operates on a Cassandra {@link Session}. Allows to execute any number of

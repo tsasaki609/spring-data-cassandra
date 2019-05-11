@@ -31,7 +31,7 @@ import org.threeten.bp.LocalDate;
 import org.threeten.bp.LocalTime;
 import org.threeten.bp.temporal.ChronoField;
 
-import com.datastax.driver.core.DataType.Name;
+import com.datastax.oss.driver.api.core.type.DataType;
 
 /**
  * Helper class to register {@link Converter} implementations for the ThreeTen Backport project in case it's present on

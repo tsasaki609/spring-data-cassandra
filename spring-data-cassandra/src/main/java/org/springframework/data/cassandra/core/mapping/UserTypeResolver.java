@@ -18,7 +18,7 @@ package org.springframework.data.cassandra.core.mapping;
 import org.springframework.data.cassandra.core.cql.CqlIdentifier;
 import org.springframework.lang.Nullable;
 
-import com.datastax.driver.core.UserType;
+import com.datastax.oss.driver.api.core.type.UserDefinedType;
 
 /**
  * Strategy interface to resolve {@link UserType} by {@link String name}.

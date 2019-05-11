@@ -17,7 +17,7 @@ package org.springframework.data.cassandra.core.cql.keyspace;
 
 import org.springframework.data.cassandra.core.cql.CqlIdentifier;
 
-import com.datastax.driver.core.DataType;
+import com.datastax.oss.driver.api.core.type.DataType;
 
 /**
  * Value object representing a specification to add a column.

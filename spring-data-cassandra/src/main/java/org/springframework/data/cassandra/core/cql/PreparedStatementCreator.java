@@ -15,9 +15,9 @@
  */
 package org.springframework.data.cassandra.core.cql;
 
-import com.datastax.driver.core.PreparedStatement;
-import com.datastax.driver.core.Session;
-import com.datastax.driver.core.exceptions.DriverException;
+import com.datastax.oss.driver.api.core.cql.PreparedStatement;
+import com.datastax.oss.driver.api.core.session.Session;
+import com.datastax.oss.driver.api.core.DriverException;
 
 /**
  * One of the two central callback interfaces used by the {@link CqlTemplate} class. This interface creates a

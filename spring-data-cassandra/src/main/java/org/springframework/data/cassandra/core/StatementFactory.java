@@ -71,6 +71,9 @@ import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.datastax.driver.core.querybuilder.Select;
 import com.datastax.driver.core.querybuilder.Select.Selection;
 import com.datastax.driver.core.querybuilder.Select.SelectionOrAlias;
+import com.datastax.oss.driver.api.core.cql.Statement;
+
+
 import com.google.common.primitives.Ints;
 
 /**

@@ -21,7 +21,7 @@ import org.springframework.data.mapping.model.SpELExpressionEvaluator;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 
-import com.datastax.driver.core.Row;
+import com.datastax.oss.driver.api.core.cql.Row;
 
 /**
  * {@link CassandraValueProvider} to read property values from a {@link Row}.
